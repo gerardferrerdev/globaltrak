@@ -1,0 +1,531 @@
+/* ============================================= */
+/* 1. PALETA DE CORES E VARIÁVEIS CSS */
+/* ============================================= */
+:root {
+    /* Cores da GlobalTrak: Preto, Prata, Cinza Moderno */
+    --color-primary: #1a1a1a;        /* Preto Escuro (Fundo, Header, Footer) */
+    --color-secondary: #007bff;     /* Azul de destaque (usado em botões) */
+    --color-text-light: #f0f0f0;    /* Prata/Branco Suave (Texto sobre fundo escuro) */
+    --color-text-dark: #333333;     /* Cinza Escuro (Texto sobre fundo claro) */
+    --color-accent: #c0c0c0;         /* Prata Brilhante (Linhas de destaque, Ícones) */
+    --color-background-light: #ffffff; /* Fundo claro (para quebrar o cinza) */
+    --color-background-dark: #2c2c2c;  /* Cinza Escuro Moderno (Fundo de Seções) */
+
+    /* Fonte principal (importada no HTML) */
+    --font-family-base: 'Montserrat', sans-serif;
+}
+
+/* ============================================= */
+/* 2. RESET E ESTILOS GLOBAIS */
+/* ============================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
+}
+
+body {
+    font-family: var(--font-family-base);
+    line-height: 1.6;
+    color: var(--color-text-dark); /* Padrão para texto em fundo claro */
+    background-color: var(--color-background-light);
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nas âncoras */
+}
+
+/* Títulos: Mais escuros e com peso para destaque */
+h1, h2, h3 {
+    color: var(--color-primary); 
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2.5rem; /* Aumenta um pouco o tamanho dos títulos de seção */
+    text-align: center;
+}
+
+a {
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: var(--color-secondary);
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+/* CLASSE UTILITÁRIA: Container para centralizar o conteúdo */
+.container {
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto;    /* Centraliza na tela */
+    padding: 0 20px;   /* Espaçamento lateral interno */
+}
+
+/* CLASSE UTILITÁRIA: Espaçamento para as seções */
+.section-padding {
+    padding: 80px 0;
+}
+
+/* CLASSE UTILITÁRIA: Seções com fundo escuro (para contraste) */
+.bg-dark {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-light); /* Garante que o texto seja claro sobre o fundo escuro */
+}
+
+.bg-dark h2 {
+    color: var(--color-text-light); /* Títulos brancos em fundo escuro */
+}
+
+/* Estilo para Botões */
+.btn-highlight {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light) !important;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s;
+}
+
+.btn-highlight:hover {
+    background-color: #0056b3; /* Um azul um pouco mais escuro no hover */
+}
+
+/* ============================================= */
+/* 3. ESTILIZAÇÃO DO CABEÇALHO (HEADER) */
+/* ============================================= */
+
+#main-header {
+    background-color: var(--color-primary); /* Fundo Preto/Escuro */
+    color: var(--color-text-light);
+    padding: 15px 0;
+    position: sticky; /* O header fica fixo no topo ao rolar */
+    top: 0;
+    z-index: 1000; /* Garante que o menu fique por cima de outros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra sutil para profundidade */
+}
+
+#main-header .container {
+    display: flex;
+    justify-content: space-between; /* Distribui logo e menu nas pontas */
+    align-items: center; /* Alinha verticalmente */
+}
+
+/* Logo da GlobalTrak */
+#main-header .logo img {
+    height: 40px; /* Altura da imagem do logo */
+    width: auto;
+}
+
+/* Navegação (Links) */
+#main-nav a {
+    color: var(--color-text-light); /* Texto Prata/Claro */
+    margin-left: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 5px 0;
+    position: relative;
+    opacity: 0.8; /* Um pouco transparente para um visual elegante */
+    transition: opacity 0.3s;
+}
+
+#main-nav a:hover {
+    color: var(--color-accent); /* Destaque Prata no hover */
+    opacity: 1;
+}
+
+/* Botão de Destaque (Localize seu Veículo) no Header */
+#main-header .btn-highlight {
+    /* Mantém o estilo de botão já definido */
+    font-size: 0.9rem;
+}
+
+/* ============================================= */
+/* 4. SEÇÃO PRINCIPAL (HERO BANNER) */
+/* ============================================= */
+
+#hero {
+    /* É crucial que você substitua 'fundo-rastreamento.jpg' pela sua imagem de fundo! */
+    background: url('../img/fundo-rastreamento.jpg') no-repeat center center; 
+    background-size: cover; /* Garante que a imagem cubra toda a seção */
+    height: 100vh; /* Ocupa 100% da altura visível (Viewport Height) */
+    position: relative;
+    display: flex; /* Para centralizar o conteúdo (texto e formulário) */
+    align-items: center;
+}
+
+/* Camada de sobreposição para escurecer a imagem e destacar o texto */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Preto semi-transparente para o visual elegante */
+}
+
+/* Conteúdo (Texto e Formulário) */
+.hero-content {
+    position: relative; /* Fica acima do overlay */
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 100px; /* Afasta do cabeçalho fixo */
+}
+
+/* Estilo do Título Principal */
+.hero-text {
+    max-width: 50%; /* O texto ocupa metade da largura */
+    color: var(--color-text-light); /* Texto Prata/Claro */
+}
+
+.hero-text h1 {
+    color: var(--color-text-light); /* Título na cor clara */
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    /* Adicionando uma sombra sutil para contraste */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Estilo da Caixa do Formulário (Onde está o destaque 'QUER FALAR COM UM CONSULTOR?') */
+.hero-form-box {
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo quase branco, semi-transparente */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+}
+
+.hero-form-box h3 {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.hero-form-box input[type="text"],
+.hero-form-box input[type="email"],
+.hero-form-box input[type="tel"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.hero-form-box .btn-highlight {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 12px 20px;
+}
+
+/* ============================================= */
+/* 5. SEÇÃO A EMPRESA */
+/* ============================================= */
+
+/* Centraliza subtítulos */
+.subtitle-centered {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
+    margin-bottom: 50px;
+}
+
+/* Layout de 2 Colunas */
+.empresa-content {
+    display: flex;
+    gap: 40px; /* Espaço entre as colunas */
+    align-items: flex-start; /* Alinha o conteúdo ao topo */
+}
+
+.empresa-image {
+    flex: 1; /* Ocupa 50% do espaço disponível */
+    padding-right: 20px; /* Espaçamento interno à direita */
+}
+
+.empresa-image img {
+    border-radius: 8px; /* Borda levemente arredondada */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.empresa-details {
+    flex: 1; /* Ocupa 50% do espaço disponível */
+}
+
+.empresa-details h3 {
+    color: var(--color-primary);
+    font-size: 1.8rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--color-accent); /* Linha prata/cinza de destaque */
+    margin-bottom: 20px;
+}
+
+.empresa-details p {
+    margin-bottom: 20px;
+}
+
+.missao-visao-group {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.missao-visao-group article {
+    flex: 1; /* Divide Missão e Visão igualmente */
+}
+
+.missao-visao-group h4 {
+    color: var(--color-secondary); /* Destaque azul para títulos internos */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* ============================================= */
+/* 6. SEÇÃO FUNCIONALIDADES */
+/* ============================================= */
+
+.color-light {
+    color: var(--color-text-light);
+}
+
+.funcionalidades-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem em várias linhas */
+    list-style: none; /* Remove o marcador padrão de lista */
+    max-width: 900px;
+    margin: 0 auto 40px auto; /* Centraliza a lista e adiciona margem inferior */
+}
+
+.funcionalidades-list li {
+    flex: 0 0 50%; /* Faz com que cada item ocupe 50% da largura (2 colunas) */
+    padding: 10px 0;
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.funcionalidades-list li::before {
+    content: "•"; /* Usa um ponto como marcador (Poderia ser um ícone com font-awesome) */
+    color: var(--color-accent); /* Marcador Prata/Destaque */
+    font-weight: 700;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    position: absolute;
+    left: 0;
+}
+
+.funcionalidades-cta {
+    text-align: center;
+}
+
+/* ============================================= */
+/* 7. SEÇÃO COMO FUNCIONA (GRID DE PASSOS) */
+/* ============================================= */
+
+.passos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas de largura igual */
+    gap: 40px; /* Espaço entre os itens */
+    margin-top: 40px;
+}
+
+.passo-item {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #e0e0e0; /* Borda cinza claro */
+    border-radius: 8px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.passo-item:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px); /* Efeito de leve levantamento no hover */
+}
+
+.passo-numero {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: var(--color-primary); /* Fundo preto elegante */
+    color: var(--color-text-light); /* Número Prata/Branco */
+    border-radius: 50%; /* Torna-o um círculo */
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    border: 3px solid var(--color-accent); /* Borda prata de destaque */
+}
+
+.passo-item h4 {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* ============================================= */
+/* 8. SEÇÃO PLANOS (GRID DE VEÍCULOS) */
+/* ============================================= */
+
+.planos-grid {
+    display: grid;
+    /* 5 colunas na maioria das telas */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.plano-item {
+    text-align: center;
+    padding: 20px 10px;
+    background-color: var(--color-primary); /* Fundo Preto dentro da seção escura */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: var(--color-text-light);
+}
+
+.plano-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    background-color: var(--color-background-dark); /* Cinza escuro para o círculo */
+    border: 3px solid var(--color-accent); /* Borda prata */
+    border-radius: 50%;
+    margin-bottom: 15px;
+    font-size: 3rem; /* Para os emojis temporários */
+}
+
+.plano-item h4 {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.plano-item p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ============================================= */
+/* 9. SEÇÃO FALE CONOSCO */
+/* ============================================= */
+
+.contato-grid {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+.contato-info {
+    flex: 1; /* Ocupa a primeira coluna (informações) */
+    padding-right: 20px;
+}
+
+.contato-info .info-item {
+    margin-bottom: 30px;
+    border-left: 5px solid var(--color-secondary); /* Linha azul de destaque */
+    padding-left: 15px;
+}
+
+.contato-info h3 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.contato-info p {
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.info-icon {
+    font-size: 2rem;
+    color: var(--color-accent); /* Ícone Prata */
+    margin-right: 10px;
+    display: none; /* Removemos o ícone para usar a borda esquerda como destaque */
+}
+
+.contato-form {
+    flex: 1.5; /* O formulário ocupa um pouco mais de espaço (cerca de 60%) */
+    background-color: #f7f7f7; /* Fundo cinza suave para o formulário */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contato-form h3 {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: var(--color-primary);
+}
+
+.contato-form input[type="text"],
+.contato-form input[type="email"],
+.contato-form input[type="tel"],
+.contato-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+}
+
+.contato-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+/* Campos em linha (Nome/Sobrenome, Cidade/Estado) */
+.form-group-inline {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group-inline input {
+    flex: 1; /* Faz com que os inputs dividam o espaço igualmente */
+}
+
+.contato-form .btn-highlight {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* ============================================= */
+/* 10. RODAPÉ (FOOTER) */
+/* ============================================= */
+
+footer {
+    padding: 30px 0;
+    text-align: center;
+    /* O estilo .bg-dark já define fundo escuro e texto claro */
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: var(--color-text-light);
+    opacity: 0.7;
+}
