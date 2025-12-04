@@ -529,3 +529,125 @@ footer p {
     color: var(--color-text-light);
     opacity: 0.7;
 }
+
+/* ============================================= */
+/* 11. RESPONSIVIDADE (MEDIA QUERIES) */
+/* ============================================= */
+
+/*
+* PONTO DE RUPTURA 1: Telas menores que 768px (Tablets em retrato e Celulares)
+*/
+@media (max-width: 768px) {
+    
+    /* GLOBAIS E UTILITÁRIOS */
+    .section-padding {
+        padding: 50px 0; /* Diminui o espaçamento vertical nas seções */
+    }
+    
+    .title-centered {
+        font-size: 2rem; /* Reduz o tamanho dos títulos */
+    }
+
+    /* 1. CABEÇALHO (HEADER) - Menu Hamburguer é a solução ideal aqui, mas para simplificar,
+       vamos forçar os itens em coluna e centralizar. */
+    #main-header .container {
+        flex-direction: column; /* Coloca logo, nav e botão em coluna */
+        text-align: center;
+    }
+    
+    #main-header .logo {
+        margin-bottom: 10px;
+    }
+    
+    #main-nav {
+        display: none; /* O ideal seria um menu hamburguer via JS, mas por enquanto, ocultamos a navegação principal para telas pequenas */
+    }
+    
+    /* 2. HERO BANNER */
+    #hero {
+        height: auto; /* Permite que a altura se ajuste ao conteúdo */
+        padding-top: 80px; /* Espaçamento do topo */
+        padding-bottom: 40px;
+    }
+    
+    .hero-content {
+        flex-direction: column; /* Coloca Texto Principal e Formulário um abaixo do outro */
+    }
+    
+    .hero-text {
+        max-width: 100%; /* Ocupa a largura total */
+        margin-bottom: 30px;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.2rem; /* Reduz o tamanho do título do banner */
+    }
+    
+    .hero-form-box {
+        max-width: 100%; /* O formulário ocupa toda a largura */
+    }
+
+    /* 3. SEÇÃO A EMPRESA */
+    .empresa-content {
+        flex-direction: column; /* Coloca Imagem e Detalhes da Empresa um abaixo do outro */
+    }
+
+    .missao-visao-group {
+        flex-direction: column; /* Coloca Missão e Visão em coluna */
+        gap: 20px;
+    }
+
+    /* 4. SEÇÃO FUNCIONALIDADES */
+    .funcionalidades-list {
+        flex-direction: column; /* Coloca a lista em uma única coluna */
+        max-width: 100%;
+    }
+
+    /* 5. SEÇÃO COMO FUNCIONA (PASSOS) */
+    .passos-grid {
+        grid-template-columns: 1fr; /* Muda de 3 colunas para 1 coluna */
+        gap: 30px;
+    }
+    
+    /* 6. SEÇÃO PLANOS (VEÍCULOS) */
+    .planos-grid {
+        grid-template-columns: repeat(2, 1fr); /* Muda de 5 colunas para 2 colunas */
+        gap: 20px;
+    }
+    
+    /* 7. SEÇÃO FALE CONOSCO */
+    .contato-grid {
+        flex-direction: column; /* Coloca Info e Formulário em coluna */
+        gap: 30px;
+    }
+
+    .contato-form {
+        flex: 1; /* Ocupa a largura total */
+    }
+    
+    .form-group-inline {
+        flex-direction: column; /* Campos em linha (Nome/Sobrenome) se separam */
+        gap: 0;
+    }
+    
+    .form-group-inline input {
+        margin-bottom: 15px;
+    }
+}
+
+/*
+* PONTO DE RUPTURA 2: Telas médias (ajuste para visualização em tablets)
+* Usaremos 1024px, mas só para otimizar os grids maiores.
+*/
+@media (max-width: 1024px) {
+    
+    /* Reduz o grid de Planos (de 5) para 3 colunas */
+    .planos-grid {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    
+    /* Mantemos 'Como Funciona' em 3 colunas, mas aumentamos o padding */
+    .passos-grid {
+        gap: 20px;
+    }
+}
